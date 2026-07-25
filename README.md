@@ -8,6 +8,7 @@ Personal [Agent Skills](https://cursor.com/docs) for Cursor and other agents. So
 |-------|-------------|
 | [session-log](./session-log/) | Append-only greppable investigation log across long chats |
 | [session-summary](./session-summary/) | Living one-page markdown snapshot of session state, rewritten in place |
+| [deep-research](./deep-research/) | Multi-wave web research via WebSearch/WebFetch + subagents (vendored from [ramit-mitra/deep-research-skill](https://github.com/ramit-mitra/deep-research-skill)) |
 
 ## Install (this machine)
 
@@ -21,14 +22,26 @@ mkdir -p ~/.agents/skills
 # link each skill from this repo
 ln -sfn "$(pwd)/session-log" ~/.agents/skills/session-log
 ln -sfn "$(pwd)/session-summary" ~/.agents/skills/session-summary
+ln -sfn "$(pwd)/deep-research" ~/.agents/skills/deep-research
 
 # optional: Cursor personal skills mirror
 mkdir -p ~/.cursor/skills
 ln -sfn ~/.agents/skills/session-log ~/.cursor/skills/session-log
 ln -sfn ~/.agents/skills/session-summary ~/.cursor/skills/session-summary
+ln -sfn ~/.agents/skills/deep-research ~/.cursor/skills/deep-research
 ```
 
 After linking, edits in this repo are live for the agent.
+
+### deep-research usage
+
+In Cursor Agent, invoke:
+
+```
+/deep-research <topic or question>
+```
+
+Uses Cursor’s built-in WebSearch, WebFetch, and Task subagents. No Firecrawl/Exa or other paid APIs.
 
 ## Add a skill
 
@@ -44,6 +57,10 @@ agentic-skills/
 ├── .gitignore
 ├── session-log/
 │   └── SKILL.md
-└── session-summary/
-    └── SKILL.md
+├── session-summary/
+│   └── SKILL.md
+└── deep-research/
+    ├── SKILL.md
+    ├── LICENSE
+    └── README.upstream.md
 ```

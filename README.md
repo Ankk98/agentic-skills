@@ -7,6 +7,7 @@ Personal [Agent Skills](https://cursor.com/docs) for Cursor and other agents. So
 | Skill | Description |
 |-------|-------------|
 | [session-log](./session-log/) | Append-only greppable investigation log across long chats |
+| [session-summary](./session-summary/) | Living one-page markdown snapshot of session state, rewritten in place |
 
 ## Install (this machine)
 
@@ -19,10 +20,12 @@ mkdir -p ~/.agents/skills
 
 # link each skill from this repo
 ln -sfn "$(pwd)/session-log" ~/.agents/skills/session-log
+ln -sfn "$(pwd)/session-summary" ~/.agents/skills/session-summary
 
 # optional: Cursor personal skills mirror
 mkdir -p ~/.cursor/skills
 ln -sfn ~/.agents/skills/session-log ~/.cursor/skills/session-log
+ln -sfn ~/.agents/skills/session-summary ~/.cursor/skills/session-summary
 ```
 
 After linking, edits in this repo are live for the agent.
@@ -39,6 +42,8 @@ After linking, edits in this repo are live for the agent.
 agentic-skills/
 ├── README.md
 ├── .gitignore
-└── session-log/
+├── session-log/
+│   └── SKILL.md
+└── session-summary/
     └── SKILL.md
 ```
